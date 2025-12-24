@@ -1,0 +1,22 @@
+#include <string>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+const int MAX = 1000000;
+
+int solution(int n) {
+    int answer = 0;
+    
+    for(int x = 1; x <= MAX; x++)
+    {
+        if(n%x == 1)
+        {
+            answer = x;
+            break;
+        }
+    }
+    
+    return answer;
+}
