@@ -1,0 +1,16 @@
+#include <string>
+#include <vector>
+#include <iostream>
+using namespace std;
+
+bool solution(int x) {
+    bool answer = true;
+    float hap = 0;
+    int temp = x;
+    while(temp > 0) {
+        hap += temp%10;
+        temp /= 10;
+    }
+    if(x/hap != int(x/hap)) answer = false;
+    return answer;
+}
