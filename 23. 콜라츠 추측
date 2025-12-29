@@ -1,0 +1,17 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(int num) {
+    int answer = 0;
+    long long tmp = num;
+    while(answer < 500)
+    {
+        if(tmp == 1) return answer;
+        else if(tmp%2 == 0) tmp /= 2;
+        else tmp = (tmp*3)+1;
+        answer++;
+    }
+    return -1;
+}
