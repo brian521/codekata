@@ -1,0 +1,31 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<int> solution(int n, int m) {
+    vector<int> answer;
+    int big, small, max;
+    if(n>=m)
+    {
+        big = n;
+        small = m;
+    }
+    else
+    {
+        big = m;
+        small = n;
+    }
+    
+    while(big%small != 0)
+    {
+        max = big%small;
+        big = small;
+        small = max;
+    }
+    max = small;
+    answer.push_back(max);
+    answer.push_back(n*m/max);    
+    
+    return answer;
+}
