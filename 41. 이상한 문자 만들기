@@ -1,0 +1,29 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+string solution(string s) {
+    string answer = "";
+    bool up = true;
+    for(char c : s)
+    {
+        if(c == ' ')
+        {
+            up = true;
+            answer.push_back(c);
+        }
+        else if(up)
+        {
+            answer.push_back(toupper(c));
+            up = false;
+        }
+        else
+        {
+            answer.push_back(tolower(c));
+            up = true;
+        }
+        
+    }
+    return answer;
+}
