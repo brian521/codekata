@@ -1,0 +1,33 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(vector<vector<int>> sizes) {
+    int answer = 0;
+    int lenM = 0;
+    int heiM = 0;
+    
+    for(vector<int> v : sizes)
+    {
+        if(v[0] < v[1])
+        {
+            int temp = v[0];
+            v[0] = v[1];
+            v[1] = temp;
+        }
+        
+        if(v[0] > lenM)
+        {
+            lenM = v[0];
+        }
+        
+        if(v[1] > heiM)
+        {
+            heiM = v[1];
+        }
+    }
+    answer = lenM * heiM;
+    
+    return answer;
+}
