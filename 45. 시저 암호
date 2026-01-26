@@ -1,0 +1,44 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+string solution(string s, int n) {
+    string answer = "";
+    for(char c : s)
+    {
+        if(c == ' ')
+        {
+            answer.push_back(c);
+        }
+        else
+        {
+            char temp;
+            if(c <= 90 && c >= 65)
+            {
+                if(c+n > 90)
+                {
+                    temp = c+n-26;
+                }
+                else
+                {
+                    temp = c+n;
+                }
+            }
+            else
+            {
+                if(c+n > 122)
+                {
+                    temp = c+n-26;
+                }
+                else
+                {
+                    temp = c+n;
+                }
+            }
+            answer.push_back(temp);
+        }
+    }
+    
+    return answer;
+}
