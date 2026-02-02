@@ -1,0 +1,29 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <map>
+
+using namespace std;
+
+vector<int> solution(vector<int> numbers) {
+    vector<int> answer;
+    map<int, int> nums;
+    
+    for(int i = 0; i < numbers.size()-1; i++)
+    {
+        for(int j = i+1; j < numbers.size(); j++)
+        {
+            if(nums.find(numbers[i]+numbers[j]) == nums.end())
+            {
+                nums.insert({numbers[i]+numbers[j],1});
+            }
+        }
+    }
+    
+    for(pair<int, int> num : nums)
+    {
+        answer.push_back(num.first);
+    }
+    
+    return answer;
+}
