@@ -1,0 +1,22 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(int a, int b, int n) {
+    int answer = 0;
+    int give = 0;
+    int left = 0;
+    
+    while(n >= a)
+    {
+        left = n%a;
+        give = n/a;
+        answer += give*b;
+        n = give*b;
+        n += left;
+        left = 0;
+        give = 0;
+    }
+    return answer;
+}
