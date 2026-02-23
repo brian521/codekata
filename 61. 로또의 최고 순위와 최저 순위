@@ -1,0 +1,40 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+vector<int> solution(vector<int> lottos, vector<int> win_nums) {
+    vector<int> answer;
+    int correct = 0;
+    int zeroCount = 0;
+
+    sort(lottos.begin(), lottos.end());
+    sort(win_nums.begin(), win_nums.end());
+    
+    for(int i = 0; i < lottos.size(); i++)
+    {
+        if(lottos[i] == 0)
+        {
+            zeroCount++;
+            continue;
+        }
+        for(int j = 0; j < win_nums.size(); j++)
+        {
+            if(lottos[i] == win_nums[j])
+            {
+                correct++;
+                continue;
+            }
+        }
+    }
+    
+    int high_match = correct + zeroCount;
+    int low_match = correct;
+    if(high_match == 0) high_match = 1;
+    answer.push_back(7 - high_match);
+    if(low_match == 0) low_match = 1;
+    answer.push_back(7 - low_match);
+    
+    return answer;
+}
