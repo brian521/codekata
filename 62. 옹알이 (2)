@@ -1,0 +1,104 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(vector<string> babbling) {
+    int answer = 0;
+    
+    for(string bab : babbling)
+    {
+        int marker = 0;
+        bool canPro = true;
+        char before = '0';
+        
+        while(marker < bab.size())
+        {
+            if(bab[marker] == before)
+            {
+                canPro = false;
+                break;
+            }
+            if(bab[marker] == 'a')
+            {
+                if(marker+2 < bab.size())
+                {
+                    if(bab.substr(marker+1, 2) != "ya")
+                    {
+                        canPro = false;
+                        break;
+                    }
+                    before = bab[marker];
+                    marker += 3;
+                }
+                else
+                {
+                    canPro = false;
+                    break;
+                }
+            }
+            else if(bab[marker] == 'y')
+            {
+                if(marker+1 < bab.size())
+                {
+                    if(bab.substr(marker+1, 1) != "e")
+                    {
+                        canPro = false;
+                        break;
+                    }
+                    before = bab[marker];
+                    marker += 2;
+                }
+                else
+                {
+                    canPro = false;
+                    break;
+                }
+            }
+            else if(bab[marker] == 'w')
+            {
+                if(marker+2 < bab.size())
+                {
+                    if(bab.substr(marker+1, 2) != "oo")
+                    {
+                        canPro = false;
+                        break;
+                    }
+                    before = bab[marker];
+                    marker += 3;
+                }
+                else
+                {
+                    canPro = false;
+                    break;
+                }
+            }
+            else if(bab[marker] == 'm')
+            {
+                if(marker+1 < bab.size())
+                {
+                    if(bab.substr(marker+1, 1) != "a")
+                    {
+                        canPro = false;
+                        break;
+                    }
+                    before = bab[marker];
+                    marker += 2;
+                }
+                else
+                {
+                    canPro = false;
+                    break;
+                }
+            }
+            else
+            {
+                canPro = false;
+                break;
+            }
+        }
+        if(canPro) answer++;
+    }
+
+    return answer;
+}
