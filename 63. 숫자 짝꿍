@@ -1,0 +1,35 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+string solution(string X, string Y) {
+    string answer = "";
+    vector<int> num1(10, 0);
+    vector<int> num2(10, 0);
+                            
+    for(char ch : X)
+    {
+        int num = ch - '0';
+        num1[num]++;
+    }
+    for(char ch : Y)
+    {
+        int num = ch - '0';
+        num2[num]++;
+    }
+    for(int i = 9; i >= 0; i--)
+    {
+        int count = min(num1[i], num2[i]);
+        if(count == 0) continue;
+        for(int j = 0; j < count; j++)
+        {
+            char ch = i + '0';
+            answer += ch;
+        }
+    }
+    if(answer[0] == '0') answer = "0";
+    if(answer == "") answer = "-1";
+    return answer;
+}
