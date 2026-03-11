@@ -1,0 +1,44 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(string s) {
+    int answer = 0;
+    string str = s;
+    
+    while(str != "")
+    {
+        char x = str[0];
+        int numX = 0;
+        int numE = 0;
+        
+        for(char ch : str)
+        {
+            if(x == ch)
+            {
+                numX++;
+            }
+            else
+            {
+                numE++;
+            }
+            
+            if(numX == numE)
+            {
+                str = str.substr(numX+numE);
+                answer++;
+                break;
+            }
+        }
+        if(numX != numE)
+        {
+            str = str.substr(numX+numE);
+            answer++;
+            break;
+        }
+    }
+    
+    
+    return answer;
+}
