@@ -1,0 +1,42 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<int> solution(vector<string> keymap, vector<string> targets) {
+    vector<int> answer;
+    
+    for(int i = 0; i < targets.size(); i++)
+    {
+        answer.push_back(0);
+        for(int j = 0; j < targets[i].size(); j++)
+        {
+            bool found = false;
+            for(int a = 0; a < 100; a++)
+            {
+                for(int b = 0; b < keymap.size(); b++)
+                {
+                    if(keymap[b].size() <= a) continue;
+                    
+                    if(targets[i][j] == keymap[b][a])
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if(found)
+                {
+                    answer[i] += a+1;
+                    break;
+                }
+            }
+            if(!found)
+            {
+                answer[i] = -1;
+                break;
+            }
+        }
+    }
+    
+    return answer;
+}
