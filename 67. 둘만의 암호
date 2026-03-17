@@ -1,0 +1,34 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+string solution(string s, string skip, int index) {
+    string answer = "";
+    
+    bool isSkip[26] = { false, };
+    for (char ch : skip) {
+        isSkip[ch - 'a'] = true;
+    }
+    
+    for (char c : s) {
+        int current = c;
+        int count = 0;
+        
+        while (count < index) {
+            current++; 
+            
+            if (current > 'z') {
+                current = 'a';
+            }
+            
+            if (!isSkip[current - 'a']) {
+                count++;
+            }
+        }
+        answer += (char)current;
+    }
+    
+    return answer;
+}
